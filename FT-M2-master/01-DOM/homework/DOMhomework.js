@@ -15,7 +15,7 @@ span.innerHTML = span.innerHTML + nombre;
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
-function ToDo () {
+function ToDo (description) {
   // Tu código acá:
   this.description = description,
   this.complete = false;
