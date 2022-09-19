@@ -51,11 +51,14 @@ ToDo.prototype.completeToDo = function() {
 
 function buildToDo(todo, index) {
   // Tu código acá:
-  let toDoShell = document.createElement('div');
+  const toDoShell = document.createElement('div');
   toDoShell.setAttribute('class', 'toDoShell');
-  let toDoText = document.createElement('span');
+
+  const toDoText = document.createElement('span');
   toDoText.innerHTML = todo.description;
   toDoText.setAttribute('id', index);
+  toDoText.addEventListener('click', completeToDo);
+
   if (todo.complete) toDoText.setAttribute('class', 'completeText');
   toDoShell.appendChild(toDoText);
   return toDoShell;
@@ -68,10 +71,10 @@ function buildToDo(todo, index) {
 
 function buildToDos(toDos) {
   // Tu código acá:
-  let arr = toDos.map(function (todo, index) {
+  const newArr = toDos.map(function (todo, index) {
     return buildToDo(todo, index);
   })
-  return arr;
+  return newArr;
 }
 
 
@@ -88,7 +91,8 @@ function displayToDos() {
   // Tu código acá:
   let toDoContainer = document.querySelector('#toDoContainer');
   toDoContainer.innerHTML = '';
-  let result = buildToDo(toDoItems);
+
+  let result = buildToDos(toDoItems);
   for (let i=0; i<result.length; i++){
     toDoContainer.appendChild(result[i])
   }
@@ -159,7 +163,7 @@ function completeToDo(event) {
 
 
 // Acá debes insertar la llamada a 'displayToDos'
-
+displayToDos();
 
 // ---------------------------- NO CAMBIES NADA DE ACÁ PARA ABAJO ----------------------------- //
 if (typeof module !== 'undefined') {
